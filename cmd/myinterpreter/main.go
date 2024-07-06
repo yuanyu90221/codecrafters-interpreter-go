@@ -44,6 +44,9 @@ func main() {
 	tokens := scanner.scanTokens()
 
 	print(tokens)
+	if hasError {
+		os.Exit(65)
+	}
 }
 func runPrompt() {
 	reader := bufio.NewReader(os.Stdin)
@@ -88,6 +91,6 @@ func error(line int, message string) {
 }
 
 func report(line int, where string, message string) {
-	fmt.Printf("[line %d] Error %s: %s\n", line, where, message)
+	fmt.Fprintf(os.Stderr, "[line %d] Error%s: %s\n", line, where, message)
 	hasError = true
 }

@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-var keywordss = map[string]int{
+var keywords = map[string]int{
 	"and":    AND,
 	"class":  CLASS,
 	"else":   ELSE,
@@ -21,6 +21,7 @@ var keywordss = map[string]int{
 	"true":   TRUE,
 	"var":    VAR,
 	"while":  WHILE,
+	"false":  FALSE,
 }
 
 type Scanner struct {
@@ -119,7 +120,7 @@ func (s *Scanner) identifier() {
 		s.advance()
 	}
 	text := s.source[s.start:s.current]
-	tokenType, ok := keywordss[text]
+	tokenType, ok := keywords[text]
 	if !ok {
 		tokenType = IDENTIFIER
 	}

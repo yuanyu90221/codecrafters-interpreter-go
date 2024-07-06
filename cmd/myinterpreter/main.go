@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 )
 
@@ -74,7 +75,17 @@ func print(tokens []Token) {
 		if token.Literal == nil {
 			fmt.Printf("%s %s %s\n", tokenNames[token.Type], token.Lexeme, "null")
 		} else {
-			fmt.Printf("%s %s %s\n", tokenNames[token.Type], token.Lexeme, token.Literal)
+			if token.Type == NUMBER {
+				value := token.Literal.(float64)
+				result := math.Floor(value)
+				if result == value {
+					fmt.Printf("%s %s %v.0\n", tokenNames[token.Type], token.Lexeme, token.Literal)
+				} else {
+					fmt.Printf("%s %s %v\n", tokenNames[token.Type], token.Lexeme, token.Literal)
+				}
+			} else {
+				fmt.Printf("%s %s %v\n", tokenNames[token.Type], token.Lexeme, token.Literal)
+			}
 		}
 	}
 }

@@ -102,5 +102,5 @@ type Token struct {
 }
 
 func (t Token) String() string {
-	return fmt.Sprintf("%s %s %s", tokenNames[t.Type], t.Lexeme, t.Literal)
+	return fmt.Sprintf("%s %s %v", tokenNames[t.Type], t.Lexeme, t.Literal)
 }

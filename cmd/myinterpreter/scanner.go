@@ -171,7 +171,7 @@ func (s *Scanner) peek() byte {
 	return s.source[s.current]
 }
 func isAlpha(c byte) bool {
-	return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+	return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c == '_')
 }
 func isAlphaNumeric(c byte) bool {
 	return isAlpha(c) || isDigit(c)

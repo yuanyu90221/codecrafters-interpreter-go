@@ -71,7 +71,11 @@ func runFile(contents []byte) {
 }
 func print(tokens []Token) {
 	for _, token := range tokens {
-		fmt.Printf("%s %s %s\n", tokenNames[token.Type], token.Lexeme, "null")
+		if token.Literal == nil {
+			fmt.Printf("%s %s %s\n", tokenNames[token.Type], token.Lexeme, "null")
+		} else {
+			fmt.Printf("%s %s %s\n", tokenNames[token.Type], token.Lexeme, token.Literal)
+		}
 	}
 }
 func run(source string) {
